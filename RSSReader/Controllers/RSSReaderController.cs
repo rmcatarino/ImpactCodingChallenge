@@ -12,7 +12,7 @@ namespace RSSReader.Controllers
         private IRSSReaderService readerSevice = new RSSReaderService();
 
         // GET: RSSReader
-        public ActionResult Index(string url, string sort, string order)
+        public ActionResult Index(string url, string sort)
         {
             RSSReaderViewModel model = new RSSReaderViewModel();
 
@@ -28,34 +28,24 @@ namespace RSSReader.Controllers
             //map to viewmodel
             var feeds = rssItems.Select(e => new FeedItemViewModel(e));
 
-            //sort (if in query)
+            //sort
+            //model.PubDateSortOrder = string.IsNullOrEmpty(sort) ? "pubDate_desc" : "pubDate"; //defualt pubDate_desc
+            model.PubDateSortOrder = sort == "pubDate" ? "pubDate_desc" : "pubDate";
+            model.TitleSortOrder = sort == "title" ? "title_desc" : "title";
             switch (sort)
             {
                 case "title":
-                    if (order == "asc")
-                    {
-                        feeds = feeds.OrderBy(s => s.Title);
-                        model.TitleSortOrder = "desc";
-                    }
-                    else
-                    {
-                        feeds = feeds.OrderByDescending(s => s.Title);
-                        model.TitleSortOrder = "asc";
-                    }
+                    feeds = feeds.OrderBy(s => s.Title);
                     break;
-
+                case "title_desc":
+                    feeds = feeds.OrderByDescending(s => s.Title);
+                    break;
                 case "pubDate":
+                    feeds = feeds.OrderBy(s => s.PublicationDate);
+                    break;
+                case "pubDate_desc":
                 default:
-                    if (order == "asc")
-                    {
-                        feeds = feeds.OrderBy(s => s.PublicationDate);
-                        model.PubDateSortOrder = "desc";
-                    }
-                    else
-                    {
-                        feeds = feeds.OrderByDescending(s => s.PublicationDate);
-                        model.PubDateSortOrder = "asc";
-                    }
+                    feeds = feeds.OrderByDescending(s => s.PublicationDate);
                     break;
             }
 
