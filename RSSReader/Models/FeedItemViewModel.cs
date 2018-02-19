@@ -1,5 +1,6 @@
 ﻿using RSSReader.Domain;
 using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace RSSReader.Models
 {
@@ -12,10 +13,13 @@ namespace RSSReader.Models
             this.PublicationDate = item.PublicationDate;
         }
 
+        [Display(Name ="Title")]
         public string Title { get; set; }
+
+        [Display(Name = "Publication Date")]
+        public DateTime? PublicationDate { get; set; }
 
         public Uri Link { get; set; }
 
-        public DateTime? PublicationDate { get; set; }
     }
 }

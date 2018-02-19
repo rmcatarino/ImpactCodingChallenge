@@ -12,15 +12,19 @@ namespace RSSReader.Controllers
         private IRSSReaderService readerSevice = new RSSReaderService();
 
         // GET: RSSReader
-        public ActionResult Index(string url = "https://stackoverflow.blog/feed/")
+        public ActionResult Index(string url, string sortDate, string sortTitle)
         {
-            var rssItems = readerSevice.Load(url);
+            RSSReaderViewModel model = new RSSReaderViewModel();
 
-            RSSReaderViewModel model = new RSSReaderViewModel()
+            if (string.IsNullOrWhiteSpace(url))
             {
-                URL = url,
-                Feeds = rssItems.Select(e => new FeedItemViewModel(e)) //Mapping logic
-            };
+                ModelState.AddModelError("ns", "No URL found");
+                return View(model);
+            }
+
+            model.URL = url;
+            var rssItems = readerSevice.Load(url);
+            model.Feeds = rssItems.Select(e => new FeedItemViewModel(e));
 
             return View(model);
         }
