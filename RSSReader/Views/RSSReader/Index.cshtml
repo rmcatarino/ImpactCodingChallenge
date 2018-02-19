@@ -11,10 +11,11 @@
     <thead>
         <tr>
             <th>
-                @Html.ActionLink("Title", "Index", new { sort = "title", url = Model.URL })
+                @Html.ActionLink("Title", "Index", new { sort = "title", Model.CurrentSort, Model.URL })
             </th>
+
             <th>
-                @Html.ActionLink("Publication Date", "Index", new { sort = "pubDate", url = Model.URL })
+                @Html.ActionLink("Publication Date", "Index", new { sort = "pubDate", currentSort= Model.CurrentSort, url = Model.URL })
             </th>
         </tr>
     </thead>
@@ -23,7 +24,7 @@
         {
         <tr>
             <td> <a href="@feed.Link.AbsoluteUri"> @feed.Title</a> </td>
-            <td>@feed.PublicationDate</td>
+            <td> @Html.DisplayFor(m => feed.PublicationDate)</td>
         </tr>
         }
     </tbody>

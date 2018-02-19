@@ -10,7 +10,9 @@ namespace RSSReader.Models
             Feeds = new List<FeedItemViewModel>();
         }
 
-        public string URL;
+        public string URL { get; set; }
+
+        public string CurrentSort { get; set; }
 
         public IEnumerable<FeedItemViewModel> Feeds { get; set; }
 

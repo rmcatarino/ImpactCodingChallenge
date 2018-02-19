@@ -12,41 +12,41 @@ namespace RSSReader.Controllers
         private IRSSReaderService readerSevice = new RSSReaderService();
 
         // GET: RSSReader
-        public ActionResult Index(string url, string sort)
+        public ActionResult Index(string url, string sort, string currentSort)
         {
             RSSReaderViewModel model = new RSSReaderViewModel();
 
             if (string.IsNullOrWhiteSpace(url))
             {
                 ModelState.AddModelError("ns", "No URL found");
+                return View(model);
             }
-            else
-            { 
-                model.URL = url;
-                //read from service
-                var rssItems = readerSevice.Load(url);
+           
+            model.URL = url;
+            //get feeds from service
+            var rssItems = readerSevice.Load(url);
 
-                //map to viewmodel
-                var feeds = rssItems.Select(e => new FeedItemViewModel(e));
+            //map to viewmodel
+            var feeds = rssItems.Select(e => new FeedItemViewModel(e));
 
-                //sort (if in query)
-                if (!string.IsNullOrWhiteSpace(sort))
+            //sort (if in query)
+            if (!string.IsNullOrWhiteSpace(sort))
+            {
+                switch (sort)
                 {
-                    switch (sort)
-                    {
-                        case "title":
-                            feeds = feeds.OrderBy(s => s.Title);
-                            break;
-                        case "pubDate":
-                        default:
-                            feeds = feeds.OrderByDescending(s => s.PublicationDate);
-                            break;
-
-                    }
+                    case "title":
+                        feeds = currentSort == "title" ? feeds.OrderByDescending(s => s.Title) : feeds.OrderBy(s => s.Title);
+                        model.CurrentSort = "title";
+                        break;
+                    case "pubDate":
+                    default:
+                        feeds = currentSort == "pubDate" ? feeds.OrderByDescending(s => s.Title) : feeds.OrderBy(s => s.PublicationDate);
+                        model.CurrentSort = "pubDate";
+                        break;
                 }
-
-                model.Feeds = feeds;
             }
+            model.Feeds = feeds;
+
             return View(model);
         }
     }
