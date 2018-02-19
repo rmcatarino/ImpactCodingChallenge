@@ -1,0 +1,27 @@
+﻿@model RSSReaderViewModel
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>RSS Reader</h2>
+
+<table>
+
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Publication Date</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var feed in Model.Feeds)
+        {
+        <tr>
+            <td> <a href="@feed.Link.AbsoluteUri"> @feed.Title</a> </td>
+            <td>@feed.PublicationDate</td>
+        </tr>
+        }
+    </tbody>
+
+</table>

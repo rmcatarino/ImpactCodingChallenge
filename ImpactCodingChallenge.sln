@@ -3,8 +3,55 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RSSReader.UI", "RSSReader\RSSReader.UI.csproj", "{91CDE59B-8320-4107-B47F-2505677CC5B9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RSSReader.Core", "RSSReader.Domain\RSSReader.Core.csproj", "{F8FCD419-4FD6-4DCB-9B3C-2D35932694BA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RSSReader.Service", "RSSReader.Service\RSSReader.Service.csproj", "{459C9AF1-A94F-48E2-8B09-5060C6A79CA2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2.LinkedList", "2.LinkedList", "{BF59626A-64BB-48C9-AFC6-35B8E8B5516C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1.RSSReader", "1.RSSReader", "{EFA5733E-2702-40A7-BB2B-2954DEC8A0D6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinkedList", "LinkedList\LinkedList.csproj", "{9AED4AD1-2BFA-4DBB-840A-C5DCC87FBDF5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinkedListTests", "LinkedListTests\LinkedListTests.csproj", "{6C7C670C-DC06-4CCF-B5F9-A9872D42EBEE}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{91CDE59B-8320-4107-B47F-2505677CC5B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91CDE59B-8320-4107-B47F-2505677CC5B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91CDE59B-8320-4107-B47F-2505677CC5B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91CDE59B-8320-4107-B47F-2505677CC5B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8FCD419-4FD6-4DCB-9B3C-2D35932694BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8FCD419-4FD6-4DCB-9B3C-2D35932694BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8FCD419-4FD6-4DCB-9B3C-2D35932694BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8FCD419-4FD6-4DCB-9B3C-2D35932694BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{459C9AF1-A94F-48E2-8B09-5060C6A79CA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{459C9AF1-A94F-48E2-8B09-5060C6A79CA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{459C9AF1-A94F-48E2-8B09-5060C6A79CA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{459C9AF1-A94F-48E2-8B09-5060C6A79CA2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9AED4AD1-2BFA-4DBB-840A-C5DCC87FBDF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9AED4AD1-2BFA-4DBB-840A-C5DCC87FBDF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9AED4AD1-2BFA-4DBB-840A-C5DCC87FBDF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9AED4AD1-2BFA-4DBB-840A-C5DCC87FBDF5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C7C670C-DC06-4CCF-B5F9-A9872D42EBEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C7C670C-DC06-4CCF-B5F9-A9872D42EBEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C7C670C-DC06-4CCF-B5F9-A9872D42EBEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C7C670C-DC06-4CCF-B5F9-A9872D42EBEE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{91CDE59B-8320-4107-B47F-2505677CC5B9} = {EFA5733E-2702-40A7-BB2B-2954DEC8A0D6}
+		{F8FCD419-4FD6-4DCB-9B3C-2D35932694BA} = {EFA5733E-2702-40A7-BB2B-2954DEC8A0D6}
+		{459C9AF1-A94F-48E2-8B09-5060C6A79CA2} = {EFA5733E-2702-40A7-BB2B-2954DEC8A0D6}
+		{9AED4AD1-2BFA-4DBB-840A-C5DCC87FBDF5} = {BF59626A-64BB-48C9-AFC6-35B8E8B5516C}
+		{6C7C670C-DC06-4CCF-B5F9-A9872D42EBEE} = {BF59626A-64BB-48C9-AFC6-35B8E8B5516C}
 	EndGlobalSection
 EndGlobal
