@@ -7,15 +7,17 @@
 
 @Html.ValidationSummary()
 
-<table>
-
+<table class="table">
     <thead>
         <tr>
-            <th>Title</th>
-            <th>Publication Date</th>
+            <th>
+                @Html.ActionLink("Title", "Index", new { sort = "title", url = Model.URL })
+            </th>
+            <th>
+                @Html.ActionLink("Publication Date", "Index", new { sort = "pubDate", url = Model.URL })
+            </th>
         </tr>
     </thead>
-
     <tbody>
         @foreach (var feed in Model.Feeds)
         {
@@ -25,5 +27,4 @@
         </tr>
         }
     </tbody>
-
 </table>
