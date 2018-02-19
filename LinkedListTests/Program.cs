@@ -6,21 +6,18 @@ namespace LinkedListTests
     {
         static void Main(string[] args)
         {
-
             LinkedList<int> ll = new LinkedList<int>();
 
             ll.Add(1);
             ll.Add(2);
             ll.Add(3);
 
-
-            var node = ll.Head;
-            while (node.Next != null)
+            var currNode = ll.Head;
+            while (currNode!= null)
             {
-                System.Console.WriteLine(node.Data.ToString());
+                System.Console.WriteLine(currNode.Data.ToString());
+                currNode = currNode.Next;
             }
-
-
         }
     }
 }
