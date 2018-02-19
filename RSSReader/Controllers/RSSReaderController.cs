@@ -29,7 +29,6 @@ namespace RSSReader.Controllers
             var feeds = rssItems.Select(e => new FeedItemViewModel(e));
 
             //sort
-            //model.PubDateSortOrder = string.IsNullOrEmpty(sort) ? "pubDate_desc" : "pubDate"; //defualt pubDate_desc
             model.PubDateSortOrder = sort == "pubDate" ? "pubDate_desc" : "pubDate";
             model.TitleSortOrder = sort == "title" ? "title_desc" : "title";
             switch (sort)
