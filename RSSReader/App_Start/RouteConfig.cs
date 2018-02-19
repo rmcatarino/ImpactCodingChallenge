@@ -15,8 +15,8 @@ namespace RSSReader
 
             routes.MapRoute(
                 name: "Default",
-                url: "{controller}/{action}/{url}",
-                defaults: new { controller = "RSSReader", action = "Index", url = UrlParameter.Optional }
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
         }
     }
