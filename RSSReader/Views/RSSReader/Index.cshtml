@@ -11,11 +11,11 @@
     <thead>
         <tr>
             <th>
-                @Html.ActionLink("Title", "Index", new { sort = "title", Model.CurrentSort, Model.URL })
+                @Html.ActionLink("Title", "Index", new { sort = "title", order = Model.TitleSortOrder, Model.URL })
             </th>
 
             <th>
-                @Html.ActionLink("Publication Date", "Index", new { sort = "pubDate", currentSort= Model.CurrentSort, url = Model.URL })
+                @Html.ActionLink("Publication Date", "Index", new { sort = "pubDate", order = Model.PubDateSortOrder, url = Model.URL })
             </th>
         </tr>
     </thead>

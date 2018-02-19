@@ -12,7 +12,7 @@ namespace RSSReader.Controllers
         private IRSSReaderService readerSevice = new RSSReaderService();
 
         // GET: RSSReader
-        public ActionResult Index(string url, string sort, string currentSort)
+        public ActionResult Index(string url, string sort, string order)
         {
             RSSReaderViewModel model = new RSSReaderViewModel();
 
@@ -21,8 +21,7 @@ namespace RSSReader.Controllers
                 ModelState.AddModelError("ns", "No URL found");
                 return View(model);
             }
-           
-            model.URL = url;
+
             //get feeds from service
             var rssItems = readerSevice.Load(url);
 
@@ -30,22 +29,38 @@ namespace RSSReader.Controllers
             var feeds = rssItems.Select(e => new FeedItemViewModel(e));
 
             //sort (if in query)
-            if (!string.IsNullOrWhiteSpace(sort))
+            switch (sort)
             {
-                switch (sort)
-                {
-                    case "title":
-                        feeds = currentSort == "title" ? feeds.OrderByDescending(s => s.Title) : feeds.OrderBy(s => s.Title);
-                        model.CurrentSort = "title";
-                        break;
-                    case "pubDate":
-                    default:
-                        feeds = currentSort == "pubDate" ? feeds.OrderByDescending(s => s.Title) : feeds.OrderBy(s => s.PublicationDate);
-                        model.CurrentSort = "pubDate";
-                        break;
-                }
+                case "title":
+                    if (order == "asc")
+                    {
+                        feeds = feeds.OrderBy(s => s.Title);
+                        model.TitleSortOrder = "desc";
+                    }
+                    else
+                    {
+                        feeds = feeds.OrderByDescending(s => s.Title);
+                        model.TitleSortOrder = "asc";
+                    }
+                    break;
+
+                case "pubDate":
+                default:
+                    if (order == "asc")
+                    {
+                        feeds = feeds.OrderBy(s => s.PublicationDate);
+                        model.PubDateSortOrder = "desc";
+                    }
+                    else
+                    {
+                        feeds = feeds.OrderByDescending(s => s.PublicationDate);
+                        model.PubDateSortOrder = "asc";
+                    }
+                    break;
             }
+
             model.Feeds = feeds;
+            model.URL = url;
 
             return View(model);
         }
